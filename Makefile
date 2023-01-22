@@ -1,12 +1,12 @@
 NAME = push_swap
 
-SRC= ./utils/utils.c main.c
+SRC= ./utils/utils.c ./utils/libft_utils.c main.c parsing.c
 
 OBJ= $(SRC:.c=.o)
 
 CC = cc
 
-#CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror 
 
 $(RM) = rm -f 
   
