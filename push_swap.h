@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/22 15:11:23 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/22 17:43:41 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	ft_swap(int *a, int *b);
 int		ft_isdigit(int c);
 int		count(const char *str, int sym);
 int		ft_atoi(const char *str);
-int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif

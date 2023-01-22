@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:47:24 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/22 15:04:40 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/22 21:41:49 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	push_to_array(char **argv, int argc, int stack_a[argc - 1])
 	i = 1;
 	while (i < argc)
 	{
-		num = atoi(argv[i]);
+		num = ft_atoi(argv[i]);
 		stack_a[i - 1] = num;
 		i++;
 	}
@@ -46,9 +46,8 @@ void	push_to_array(char **argv, int argc, int stack_a[argc - 1])
 	j = 0;
 	while (i < argc - 1)
 	{
-		while (stack_a[j] < stack_a[i])
-			j++;
-		if (stack_a[j] > stack_a[i])
+		printf("stack_0 : %d - %d\n",stack_a[i] , stack_a[i - 1]);
+		if (stack_a[i - 1] > stack_a[i])
 		{
 			printf("Error : not suiv:\n");
 			exit(1);
@@ -59,7 +58,6 @@ void	push_to_array(char **argv, int argc, int stack_a[argc - 1])
 
 void	check_digits(char **argv, int argc)
 {
-	int	num;
 	int	index;
 	int	j;
 
@@ -77,12 +75,12 @@ void	check_digits(char **argv, int argc)
 			}
 			j++;
 		}
-		num = ft_atoi(argv[index]);
 		index++;
 	}
 }
 
 void	check_duplicate(int argc, char **argv)
+
 {
 	int	index;
 	int	j;

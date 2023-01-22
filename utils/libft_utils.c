@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:06:58 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/22 15:19:06 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:57:40 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,27 @@ void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
 	size_t	i;
 
 	i = 0;
+	if (s2[0] == '+' && ((s1[i] - s2[i + 1]) == 0))
+	{
+		ft_putstr("Erorr dup in cmp \n");
+		exit(1);
+	}
+	if (s1[0] == '+' && ((s1[i + 1] - s2[i]) == 0))
+	{
+		ft_putstr("Erorr dup in cmp \n");
+		exit(1);
+	}
 	while ((s1[i] && s2[i]))
 	{
-		if ((unsigned char)s1[i] == (unsigned char)s2[i])
+		if (s1[i] == s2[i])
 			i++;
 		else
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+			return (s1[i] - s2[i]);
 	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (s1[i] - s2[i]);
 }
