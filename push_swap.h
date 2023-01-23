@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/23 05:39:15 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/23 07:25:17 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 # include <stdio.h>
 # include <string.h>
 
-// typedef struct s_array {
-// 	int *stack_a;
-//     int *stack_b;
-// }               t_array;
+typedef struct s_array {
+	int *stack_a;
+    int *stack_b;
+}               t_array;
 
 void	check_opera(char **argv, int index, int j);
-void	push_to_array(char **argv, int argc, int stack_a[argc - 1]);
+void	push_to_array(char **argv, int argc, t_array *array);
 void	check_digits(char **argv, int argc);
 void	check_duplicate(int argc, char **argv);
 int		ft_putstr(char *s);

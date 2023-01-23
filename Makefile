@@ -13,7 +13,7 @@ $(RM) = rm -f
 all: $(NAME)
 
 $(NAME): $(OBJ) 
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -fsanitize=address -g  -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
