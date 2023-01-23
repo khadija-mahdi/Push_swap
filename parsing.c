@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:47:24 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/23 07:44:21 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/23 20:15:23 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,22 @@ void	check_opera(char **argv, int index, int j)
 	}
 }
 
-void	push_to_array(char **argv, int argc, t_array *array)
+void	push_to_array_check_sorted(char **argv, int argc, t_array *array)
 {
 	int	i;
 	int	is_sorted;
 
-	array->stack_a = malloc(argc * sizeof(int *));
+	array->stack_a = malloc((argc - 1) * sizeof(int *));
 	i = 1;
-	printf("%d\n",array->stack_a[i]);
 	while (i < argc)
 	{
 		array->stack_a[i] = ft_atoi(argv[i]);
-		i++;
-	}
-	while (i < argc)
-	{
-		printf("%d\n",array->stack_a[i]);
+		printf("stack_a : %d\n", array->stack_a[i]);
 		i++;
 	}
 	is_sorted = 1;
 	i = 1;
-	while (i < argc)
+	while (i < argc - 1)
 	{
 		if (array->stack_a[i] > array->stack_a[i + 1])
 		{
