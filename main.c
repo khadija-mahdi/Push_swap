@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/22 21:32:36 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/23 05:39:31 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,10 @@ int	main(int argc, char **argv)
 
 	stack_a = malloc(argc * sizeof(int));
 	if (!stack_a)
-	{
-		printf("malloc error");
-		return (0);
-	}
-	// stack_b = NULL;
+		exit_msg("ERROR maloc !!");
 	if (argc < 2)
 		return (0);
 	push_to_array(argv, argc, stack_a);
 	check_digits(argv, argc);
 	check_duplicate(argc, argv);
-	
 }

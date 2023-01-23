@@ -6,54 +6,53 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:47:24 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/22 21:41:49 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/23 05:40:15 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	exit_msg(char *msg)
+{
+	ft_putstr(msg);
+	exit(1);
+}
 
 void	check_opera(char **argv, int index, int j)
 {
 	if (argv[index][j] == '-' || argv[index][j] == '+')
 	{
 		if (argv[index][j + 1] == ' ')
-		{
-			ft_putstr("Error2 : \n");
-			exit(1);
-		}
+			exit_msg("Error1 \n");
 		if (ft_strlen(argv[index]) == 1)
-		{
-			ft_putstr("Error : one opera : \n");
-			exit(1);
-		}
+			exit_msg("Error2 \n");
 	}
 }
 
 void	push_to_array(char **argv, int argc, int stack_a[argc - 1])
 {
 	int	i;
-	int	num;
-	int	j;
+	int	is_sorted;
 
 	i = 1;
 	while (i < argc)
 	{
-		num = ft_atoi(argv[i]);
-		stack_a[i - 1] = num;
+		stack_a[i] = ft_atoi(argv[i]);
 		i++;
 	}
+	is_sorted = 1;
 	i = 1;
-	j = 0;
-	while (i < argc - 1)
+	while (i < argc)
 	{
-		printf("stack_0 : %d - %d\n",stack_a[i] , stack_a[i - 1]);
-		if (stack_a[i - 1] > stack_a[i])
+		if (stack_a[i] > stack_a[i + 1])
 		{
-			printf("Error : not suiv:\n");
-			exit(1);
+			is_sorted = 0;
+			break ;
 		}
 		i++;
 	}
+	if (is_sorted != 0)
+		exit_msg("Error3 \n");
 }
 
 void	check_digits(char **argv, int argc)
@@ -69,10 +68,7 @@ void	check_digits(char **argv, int argc)
 		{
 			check_opera(argv, index, j);
 			if (!ft_isdigit(argv[index][j]))
-			{
-				ft_putstr("Error: not digit\n");
-				exit(1);
-			}
+				exit_msg("Error4 \n");
 			j++;
 		}
 		index++;
@@ -92,10 +88,7 @@ void	check_duplicate(int argc, char **argv)
 		while (j < argc)
 		{
 			if (ft_strcmp(argv[index], argv[j]) == 0)
-			{
-				ft_putstr("Error : dupli\n");
-				exit(1);
-			}
+				exit_msg("Error5 \n");
 			j++;
 		}
 		index++;

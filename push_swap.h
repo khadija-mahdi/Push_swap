@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/22 17:43:41 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/23 05:39:15 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # include <stdio.h>
 # include <string.h>
 
+// typedef struct s_array {
+// 	int *stack_a;
+//     int *stack_b;
+// }               t_array;
+
 void	check_opera(char **argv, int index, int j);
 void	push_to_array(char **argv, int argc, int stack_a[argc - 1]);
 void	check_digits(char **argv, int argc);
@@ -31,6 +36,7 @@ void	ft_swap(int *a, int *b);
 int		ft_isdigit(int c);
 int		count(const char *str, int sym);
 int		ft_atoi(const char *str);
+void	exit_msg(char *msg);
 int		ft_strcmp(char *s1, char *s2);
 
 #endif

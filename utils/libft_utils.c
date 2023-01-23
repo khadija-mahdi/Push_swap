@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:06:58 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/22 20:57:40 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/23 05:04:35 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,9 @@ int	ft_strcmp(char *s1, char *s2)
 
 	i = 0;
 	if (s2[0] == '+' && ((s1[i] - s2[i + 1]) == 0))
-	{
-		ft_putstr("Erorr dup in cmp \n");
-		exit(1);
-	}
+		exit_msg("Error7 \n");
 	if (s1[0] == '+' && ((s1[i + 1] - s2[i]) == 0))
-	{
-		ft_putstr("Erorr dup in cmp \n");
-		exit(1);
-	}
+		exit_msg("Error8 \n");
 	while ((s1[i] && s2[i]))
 	{
 		if (s1[i] == s2[i])

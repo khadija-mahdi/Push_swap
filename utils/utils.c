@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:37:02 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/22 21:58:00 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/23 05:11:17 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,8 @@ int	count(const char *str, int sym)
 		res = 10 * res + (*str - '0');
 		str++;
 	}
-	if ((res < 2147483647 && sym == -1))
-	{
-		ft_putstr("Error : biger then max int \n");
-		exit(1);
-	}
-	printf("res : %llu\n",res);
+	if ((res > 2147483647 && sym == 1) || (res > 2147483648 && sym == -1))
+		exit_msg("Error10 \n");
 	return (res * sym);
 }
 
@@ -75,6 +71,5 @@ int	ft_atoi(const char *str)
 			sym *= (-1);
 		str++;
 	}
-	printf("%d",sym);
 	return (count(str, sym));
 }
