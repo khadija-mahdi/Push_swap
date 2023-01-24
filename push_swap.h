@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/24 04:33:58 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/24 19:21:21 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 typedef struct s_array
 {
-	int	*stack_a;
-	int	*stack_b;
+	int	**stack_a;
+	int	**stack_b;
 }			t_array;
 
 void	check_opera(char **argv, int index, int j);
