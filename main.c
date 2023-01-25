@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 06:46:30 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/25 06:49:56 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_array	*init_stacks(int argc, char **argv)
 	if (!array)
 		exit_msg("ERROR maloc !!");
 	array->stack_b = malloc((argc - 1) * sizeof(int *));
-	//array->stack_b = NULL;
 	array->new_stack = malloc((argc - 1) * sizeof(int *));
 	array->stack_a = malloc((argc - 1) * sizeof(int *));
 	i = 1;
@@ -38,10 +37,13 @@ t_array	*init_stacks(int argc, char **argv)
 	}
 	return (array);
 }
+
 void	print_stacks(t_array *stacks, int argc)
 {
+	int	j;
+
 	printf("-------------------------------\n");
-	int j = 0;
+	j = 0;
 	while (j < argc - 1)
 	{
 		printf("stack_b  ---->: %d\n", stacks->stack_b[j]);
@@ -67,5 +69,5 @@ int	main(int argc, char **argv)
 	check_digits(argv, argc);
 	check_duplicate(argc, argv);
 	check_sorted(argc, stacks);
-	print_stacks(stacks,argc);
+	print_stacks(stacks, argc);
 }
