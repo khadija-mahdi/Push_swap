@@ -6,11 +6,32 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 06:49:56 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/25 06:51:12 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	print_stacks(t_array *stacks, int argc)
+{
+	int	j;
+
+	printf("-------------------------------\n");
+	j = 0;
+	while (j < argc - 1)
+	{
+		printf("stack_b  ---->: %d\n", stacks->stack_b[j]);
+		j++;
+	}
+	printf("-------------------------------\n");
+	j = 0;
+	while (j < argc - 1)
+	{
+		printf("stack_a  ---->: %d\n", stacks->stack_a[j]);
+		j++;
+	}
+	printf("-------------------------------\n");
+}
 
 t_array	*init_stacks(int argc, char **argv)
 {
@@ -36,27 +57,6 @@ t_array	*init_stacks(int argc, char **argv)
 		j++;
 	}
 	return (array);
-}
-
-void	print_stacks(t_array *stacks, int argc)
-{
-	int	j;
-
-	printf("-------------------------------\n");
-	j = 0;
-	while (j < argc - 1)
-	{
-		printf("stack_b  ---->: %d\n", stacks->stack_b[j]);
-		j++;
-	}
-	printf("-------------------------------\n");
-	j = 0;
-	while (j < argc - 1)
-	{
-		printf("stack_a  ---->: %d\n", stacks->stack_a[j]);
-		j++;
-	}
-	printf("-------------------------------\n");
 }
 
 int	main(int argc, char **argv)
