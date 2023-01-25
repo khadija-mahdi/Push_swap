@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 06:44:37 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/25 06:46:30 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ int	main(int argc, char **argv)
 	stacks = init_stacks(argc, argv);
 	check_digits(argv, argc);
 	check_duplicate(argc, argv);
-	check_sorted(argv, argc, stacks);
+	check_sorted(argc, stacks);
 	print_stacks(stacks,argc);
 }

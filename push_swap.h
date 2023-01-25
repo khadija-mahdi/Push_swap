@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 06:12:20 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/25 06:46:15 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_array
 }			t_array;
 
 void	check_opera(char **argv, int index, int j);
-void	check_sorted(char **argv, int argc, t_array *array);
+void	check_sorted(int argc, t_array *array);
 void	check_digits(char **argv, int argc);
 void	check_duplicate(int argc, char **argv);
 int		ft_putstr(char *s);

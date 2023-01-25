@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:47:24 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 06:29:05 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/25 06:45:40 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_opera(char **argv, int index, int j)
 	}
 }
 
-void	check_sorted(char **argv, int argc, t_array *array)
+void	check_sorted(int argc, t_array *array)
 {
 	int	i;
 	int	is_sorted;
