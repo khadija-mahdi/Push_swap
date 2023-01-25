@@ -6,17 +6,11 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:47:24 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/24 19:22:28 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/25 06:29:05 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	exit_msg(char *msg)
-{
-	ft_putstr(msg);
-	exit(1);
-}
 
 void	check_opera(char **argv, int index, int j)
 {
@@ -29,37 +23,25 @@ void	check_opera(char **argv, int index, int j)
 	}
 }
 
-void	push_to_array_check_sorted(char **argv, int argc, t_array *array)
+void	check_sorted(char **argv, int argc, t_array *array)
 {
 	int	i;
 	int	is_sorted;
 
-	array->stack_a = malloc((argc ) * sizeof(int **));
-	 printf("stack_a : %d\n", array->stack_a[i]);
-// 	i = 1;
-// 	while (i < argc)
-// 	{
-// 		if (argv[i][0] == '\0')
-// 			exit_msg("Error_empty \n");
-// 		array->stack_a[i] = ft_atoi(argv[i]);
-// 		// printf("stack_a : %d\n", array->stack_a[i]);
-// 		i++;
-// 	}
-// 	is_sorted = 1;
-// 	i = 1;
-// 	while (i < argc - 1)
-// 	{
-// 		if (array->stack_a[i] > array->stack_a[i + 1])
-// 		{
-// 			is_sorted = 0;
-// 			break ;
-// 		}
-// 		i++;
-// 	}
-// 	if (is_sorted != 0)
-// 		exit_msg("Error3 \n");
-	
-// }
+	is_sorted = 1;
+	i = 0;
+	while (i < argc - 2)
+	{
+		if (array->stack_a[i] > array->stack_a[i + 1])
+		{
+			is_sorted = 0;
+			break ;
+		}
+		i++;
+	}
+	if (is_sorted == 1)
+		exit_msg("Error3 \n");
+}
 
 void	check_digits(char **argv, int argc)
 {

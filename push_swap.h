@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/24 19:21:21 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/25 06:12:20 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,23 @@
 
 typedef struct s_array
 {
-	int	**stack_a;
-	int	**stack_b;
+	int	*stack_a;
+	int	*stack_b;
+	int	*new_stack;
+	int	*sorted;
+	int	capacity;
+	int	top_a;
+	int	top_b;
+	int	size_a;
+	int	size_b;
 }			t_array;
 
 void	check_opera(char **argv, int index, int j);
-void	push_to_array_check_sorted(char **argv, int argc, t_array *array);
+void	check_sorted(char **argv, int argc, t_array *array);
 void	check_digits(char **argv, int argc);
 void	check_duplicate(int argc, char **argv);
 int		ft_putstr(char *s);
+int		ft_strcmp(char *s1, char *s2);
 int		ft_strlen(const char *s);
 void	ft_sort_int_tab(int *tab, int size);
 void	ft_swap(int *a, int *b);
@@ -38,6 +46,14 @@ int		ft_isdigit(int c);
 int		count(const char *str, int sym);
 int		ft_atoi(const char *str);
 void	exit_msg(char *msg);
-int		ft_strcmp(char *s1, char *s2);
+void	rorate_stacks(int argc, t_array *stacks, int *stack_name);
+void	rorate(int argc, t_array *stacks, char *inst);
+void	reverse_rorate_stacks(int argc, t_array *stacks, int *stack_name);
+void	reverse_rorate(int argc, t_array *stacks, char *inst);
+void	swap_stacks(t_array *stacks, char *inst);
+void	push_stacks(int argc, t_array *stacks, char *inst);
+void	remove_top_stacks(int argc, int *stack_name);
+void	is_empty(int argc, int *stack_name);
+// void	show(t_array *stack, int clear);
 
 #endif
