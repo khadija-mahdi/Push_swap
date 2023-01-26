@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 06:51:12 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/27 00:06:38 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	print_stacks(t_array *stacks, int argc)
 		j++;
 	}
 	printf("-------------------------------\n");
+	printf("size_b----> %d\n", stacks->size_b);
+	printf("size_a----> %d\n", stacks->size_a);
+	printf("top_a-----> %d\n", stacks->top_a);
+	printf("-------------------------------\n");
 }
 
 t_array	*init_stacks(int argc, char **argv)
@@ -42,9 +46,11 @@ t_array	*init_stacks(int argc, char **argv)
 	array = malloc(sizeof(t_array));
 	if (!array)
 		exit_msg("ERROR maloc !!");
-	array->stack_b = malloc((argc - 1) * sizeof(int *));
-	array->new_stack = malloc((argc - 1) * sizeof(int *));
-	array->stack_a = malloc((argc - 1) * sizeof(int *));
+	array->stack_b = malloc((argc) * sizeof(int));
+	array->new_stack = malloc((argc - 1) * sizeof(int));
+	array->stack_a = malloc(argc * sizeof(int));
+	array->size_a = 0;
+	array->size_b = 0;
 	i = 1;
 	j = 0;
 	while (j < argc - 1)
@@ -52,10 +58,11 @@ t_array	*init_stacks(int argc, char **argv)
 		if (argv[i][0] == '\0')
 			exit_msg("Error_empty \n");
 		array->stack_a[j] = ft_atoi(argv[i]);
-		array->stack_b[j] = 0;
+		array->size_a++;
 		i++;
 		j++;
 	}
+	array->top_a = array->stack_a[j - 1];
 	return (array);
 }
 
@@ -63,11 +70,13 @@ int	main(int argc, char **argv)
 {
 	t_array	*stacks;
 
-	if (argc <= 2)
+	if (argc < 2)
 		return (0);
 	stacks = init_stacks(argc, argv);
 	check_digits(argv, argc);
 	check_duplicate(argc, argv);
 	check_sorted(argc, stacks);
+	print_stacks(stacks, argc);
+	sort_three_elments(stacks, argc);
 	print_stacks(stacks, argc);
 }

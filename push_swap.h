@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 06:46:15 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/27 00:06:59 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,23 @@ int		ft_putstr(char *s);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strlen(const char *s);
 void	ft_sort_int_tab(int *tab, int size);
+char	**ft_split(char const *s, char c);
+char	*ft_strdup(const char *s1);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	ft_swap(int *a, int *b);
 int		ft_isdigit(int c);
 int		count(const char *str, int sym);
 int		ft_atoi(const char *str);
 void	exit_msg(char *msg);
-void	rorate_stacks(int argc, t_array *stacks, int *stack_name);
+void	remove_top_stacks(int size, int *stack_name);
+void	reverse_top_stacks(int size, int *stack_name);
 void	rorate(int argc, t_array *stacks, char *inst);
 void	reverse_rorate_stacks(int argc, t_array *stacks, int *stack_name);
 void	reverse_rorate(int argc, t_array *stacks, char *inst);
 void	swap_stacks(t_array *stacks, char *inst);
-void	push_stacks(int argc, t_array *stacks, char *inst);
+void	push_stacks(t_array *stacks, char *inst);
 void	remove_top_stacks(int argc, int *stack_name);
 void	is_empty(int argc, int *stack_name);
-// void	show(t_array *stack, int clear);
+void	sort_three_elments(t_array *stacks, int argc);
 
 #endif

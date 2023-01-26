@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 04:06:36 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 05:33:28 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/26 23:41:05 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void	rorate(int argc, t_array *stacks, char *inst)
 		rorate_stacks(argc, stacks, stacks->stack_a);
 		ft_putstr("pa\n");
 	}
-	if (!ft_strcmp(inst, "rb"))
+	else if (!ft_strcmp(inst, "rb") && stacks->size_b != 0)
 	{
 		rorate_stacks(argc, stacks, stacks->stack_b);
 		ft_putstr("rb\n");
 	}
-	if (!ft_strcmp(inst, "rr"))
+	else if (!ft_strcmp(inst, "rr") && stacks->size_b != 0)
 	{
 		rorate_stacks(argc, stacks, stacks->stack_a);
 		rorate_stacks(argc, stacks, stacks->stack_b);
@@ -86,12 +86,12 @@ void	reverse_rorate(int argc, t_array *stacks, char *inst)
 		reverse_rorate_stacks(argc, stacks, stacks->stack_a);
 		ft_putstr("rra\n");
 	}
-	if (!ft_strcmp(inst, "rrb"))
+	else if (!ft_strcmp(inst, "rrb") && stacks->size_b != 0)
 	{
 		reverse_rorate_stacks(argc, stacks, stacks->stack_b);
 		ft_putstr("rrb\n");
 	}
-	if (!ft_strcmp(inst, "rrr"))
+	else if (!ft_strcmp(inst, "rrr") && stacks->size_b != 0)
 	{
 		reverse_rorate_stacks(argc, stacks, stacks->stack_a);
 		reverse_rorate_stacks(argc, stacks, stacks->stack_b);

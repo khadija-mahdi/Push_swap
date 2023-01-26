@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:47:24 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 06:45:40 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/26 23:38:38 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	check_sorted(int argc, t_array *array)
 		i++;
 	}
 	if (is_sorted == 1)
-		exit_msg("Error3 \n");
+		exit(0);
 }
 
 void	check_digits(char **argv, int argc)
