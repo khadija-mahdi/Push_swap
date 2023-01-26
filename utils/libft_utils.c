@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:06:58 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/26 18:59:17 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/27 00:16:44 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,38 +59,4 @@ int	ft_strcmp(char *s1, char *s2)
 			return (s1[i] - s2[i]);
 	}
 	return (s1[i] - s2[i]);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	size_t	len;
-	char	*dst;
-
-	len = ft_strlen(s1) + 1;
-	dst = malloc(len * sizeof(char));
-	if (!dst)
-		return (NULL);
-	ft_memcpy(dst, s1, len);
-	return (dst);
-}
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
-
-	i = 0;
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (dst == 0 && src == 0)
-		return (0);
-	if (dst == src)
-		return (dst);
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dst);
 }

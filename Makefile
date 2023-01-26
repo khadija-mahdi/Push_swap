@@ -1,7 +1,7 @@
 NAME = push_swap
 
 SRC= ./Instruction/rotate.c ./Instruction/push_and_swap.c ./utils/utils.c ./utils/libft_utils.c \
-	./utils/ft_split.c main.c parsing.c push_swap.c sort.c
+	main.c parsing.c push_swap.c sort.c
 
 OBJ= $(SRC:.c=.o)
 
