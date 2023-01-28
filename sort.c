@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 07:02:39 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/27 00:12:08 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/28 00:56:34 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	sort_three_elments(t_array *stacks, int argc)
 {
-	int	n1;
-	int	n2;
-	int	n3;
+	int i;
+	int n1;
+	int n2;
+	int n3;
 
-	if (argc == 4)
+	i = 0;
+	if (stacks->size_a == 3)
 	{
 		n1 = stacks->stack_a[0];
 		n2 = stacks->stack_a[1];
@@ -44,3 +46,26 @@ void	sort_three_elments(t_array *stacks, int argc)
 		}
 	}
 }
+
+void	sort_five_elments(t_array *stacks, int argc)
+{
+	int i;
+
+	i = 0;
+	if (argc == 6)
+	{
+		push_stacks(stacks, "pb");
+		push_stacks(stacks, "pb");
+		if (stacks->size_a == 3)
+			sort_three_elments(stacks, argc);
+		// if (stacks->stack_b[0] > stacks->stack_b[1])
+		// 	swap_stacks(stacks, "sa");
+		// push_stacks(stacks, "pa");
+		// push_stacks(stacks, "pa");
+		// reverse_rorate(argc, stacks, "rra");
+		// reverse_rorate(argc, stacks, "rra");
+		
+
+	}
+}
+

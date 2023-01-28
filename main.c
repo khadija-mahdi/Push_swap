@@ -6,26 +6,26 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/27 00:06:38 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/28 00:42:52 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stacks(t_array *stacks, int argc)
+void	print_stacks(t_array *stacks)
 {
 	int	j;
 
 	printf("-------------------------------\n");
 	j = 0;
-	while (j < argc - 1)
+	while (j < stacks->size_b)
 	{
 		printf("stack_b  ---->: %d\n", stacks->stack_b[j]);
 		j++;
 	}
 	printf("-------------------------------\n");
 	j = 0;
-	while (j < argc - 1)
+	while ( j < stacks->size_a)
 	{
 		printf("stack_a  ---->: %d\n", stacks->stack_a[j]);
 		j++;
@@ -33,7 +33,6 @@ void	print_stacks(t_array *stacks, int argc)
 	printf("-------------------------------\n");
 	printf("size_b----> %d\n", stacks->size_b);
 	printf("size_a----> %d\n", stacks->size_a);
-	printf("top_a-----> %d\n", stacks->top_a);
 	printf("-------------------------------\n");
 }
 
@@ -62,7 +61,6 @@ t_array	*init_stacks(int argc, char **argv)
 		i++;
 		j++;
 	}
-	array->top_a = array->stack_a[j - 1];
 	return (array);
 }
 
@@ -76,7 +74,10 @@ int	main(int argc, char **argv)
 	check_digits(argv, argc);
 	check_duplicate(argc, argv);
 	check_sorted(argc, stacks);
-	print_stacks(stacks, argc);
-	sort_three_elments(stacks, argc);
-	print_stacks(stacks, argc);
+	print_stacks(stacks);
+	
+	sort_five_elments(stacks, argc);
+	// sort_three_elments(stacks, argc);
+
+	print_stacks(stacks);
 }

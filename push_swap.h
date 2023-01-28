@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/27 00:15:55 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/28 00:26:28 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ typedef struct s_array
 	int	*stack_a;
 	int	*stack_b;
 	int	*new_stack;
-	int	*sorted;
-	int	capacity;
-	int	top_a;
-	int	top_b;
 	int	size_a;
 	int	size_b;
 }			t_array;
@@ -54,6 +50,8 @@ void	reverse_rorate(int argc, t_array *stacks, char *inst);
 void	swap_stacks(t_array *stacks, char *inst);
 void	push_stacks(t_array *stacks, char *inst);
 void	remove_top_stacks(int argc, int *stack_name);
-void	sort_three_elments(t_array *stacks, int argc);
+void	sort_five_elments(t_array *stacks, int argc);
+void	sort_three_elments(t_array *stacks,int argc);
+void	sort(t_array *stacks);
 
 #endif
