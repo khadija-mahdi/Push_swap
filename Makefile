@@ -7,14 +7,14 @@ OBJ= $(SRC:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror 
+#CFLAGS = -Wall -Wextra -Werror 
 
 $(RM) = rm -f 
   
 all: $(NAME)
 
 $(NAME): $(OBJ) 
-	$(CC) $(CFLAGS) $(OBJ) -fsanitize=address -g  -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ)   -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)

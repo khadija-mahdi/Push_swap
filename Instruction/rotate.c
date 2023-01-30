@@ -6,95 +6,88 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 04:06:36 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/26 23:41:05 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/29 21:58:14 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rorate_stacks(int argc, t_array *stacks, int *stack_name)
+int *rorate_stacks(int *stack, int *size)
 {
 	int	i;
 	int	j;
 
+	int *new_stack = malloc((*size) * sizeof(int));
 	i = 1;
 	j = 0;
-	while (i < argc - 1)
+	while (i < (*size))
 	{
-		stacks->new_stack[j] = stack_name[i];
+		new_stack[j] = stack[i];
 		i++;
 		j++;
 	}
-	stacks->new_stack[j] = stack_name[0];
-	i = 0;
-	while (i < argc - 1)
-	{
-		stack_name[i] = stacks->new_stack[i];
-		i++;
-	}
+	new_stack[j] = stack[0];
+	free(stack);
+    return (new_stack);
 }
 
-void	rorate(int argc, t_array *stacks, char *inst)
+void	rorate(t_array *stacks, char *inst)
 {
 	if (!ft_strcmp(inst, "ra"))
 	{
-		rorate_stacks(argc, stacks, stacks->stack_a);
-		ft_putstr("pa\n");
+		stacks->stack_a = rorate_stacks(stacks->stack_a, &stacks->size_a);
+		ft_putstr("ra\n");
 	}
 	else if (!ft_strcmp(inst, "rb") && stacks->size_b != 0)
 	{
-		rorate_stacks(argc, stacks, stacks->stack_b);
+		stacks->stack_b = rorate_stacks(stacks->stack_b, &stacks->size_b);
 		ft_putstr("rb\n");
 	}
 	else if (!ft_strcmp(inst, "rr") && stacks->size_b != 0)
 	{
-		rorate_stacks(argc, stacks, stacks->stack_a);
-		rorate_stacks(argc, stacks, stacks->stack_b);
+		stacks->stack_a = rorate_stacks(stacks->stack_a, &stacks->size_a);
+		stacks->stack_b = rorate_stacks(stacks->stack_b, &stacks->size_b);
 		ft_putstr("rr\n");
 	}
 }
 
-void	reverse_rorate_stacks(int argc, t_array *stacks, int *stack_name)
-{
-	int	j;
-	int	i;
 
-	j = 0;
-	while (j < argc - 1)
-		j++;
-	stacks->new_stack[0] = stack_name[j - 1];
+int *add_to_stack_rotate(int *stack, int *size)
+{
+
+	int j;
+    int *new_stack = malloc((*size) * sizeof(int));
+	
+	new_stack[0] = stack[*size - 1];
+	
+	int i = 0;
 	j = 1;
-	i = 0;
-	while (i < argc - 1)
-	{
-		stacks->new_stack[j] = stack_name[i];
+    while (i < (*size) - 1)
+    {
+        new_stack[j] = stack[i];
+        i++;
 		j++;
-		i++;
-	}
-	i = 0;
-	while (i < argc - 1)
-	{
-		stack_name[i] = stacks->new_stack[i];
-		i++;
-	}
+    }
+    free(stack);
+    return (new_stack);
 }
 
-void	reverse_rorate(int argc, t_array *stacks, char *inst)
+void	reverse_rorate(t_array *stacks, char *inst)
 {
 	if (!ft_strcmp(inst, "rra"))
 	{
-		reverse_rorate_stacks(argc, stacks, stacks->stack_a);
+		stacks->stack_a = add_to_stack_rotate(stacks->stack_a,&stacks->size_a);
 		ft_putstr("rra\n");
 	}
 	else if (!ft_strcmp(inst, "rrb") && stacks->size_b != 0)
 	{
-		reverse_rorate_stacks(argc, stacks, stacks->stack_b);
+		stacks->stack_b = add_to_stack_rotate(stacks->stack_b,&stacks->size_b);
 		ft_putstr("rrb\n");
 	}
 	else if (!ft_strcmp(inst, "rrr") && stacks->size_b != 0)
 	{
-		reverse_rorate_stacks(argc, stacks, stacks->stack_a);
-		reverse_rorate_stacks(argc, stacks, stacks->stack_b);
+		stacks->stack_a = add_to_stack_rotate(stacks->stack_a,&stacks->size_a);
+		stacks->stack_b = add_to_stack_rotate(stacks->stack_b,&stacks->size_b);
 		ft_putstr("rrr\n");
 	}
 }

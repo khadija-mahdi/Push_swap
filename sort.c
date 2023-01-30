@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 07:02:39 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/28 00:56:34 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/31 00:12:21 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,43 +29,148 @@ void	sort_three_elments(t_array *stacks, int argc)
 			swap_stacks(stacks, "sa");
 		else if (n1 < n2 && n2 > n3 && n3 > n1)
 		{
-			reverse_rorate(argc, stacks, "rra");
+			reverse_rorate(stacks, "rra");
 			swap_stacks(stacks, "sa");
 		}
 		else if (n1 > n2 && n2 > n3)
 		{
 			swap_stacks(stacks, "sa");
-			reverse_rorate(argc, stacks, "rra");
+			reverse_rorate(stacks, "rra");
 		}
 		else if (n1 < n2 && n2 > n3)
-			reverse_rorate(argc, stacks, "rra");
+			reverse_rorate(stacks, "rra");
 		else if (n1 > n2 && n2 < n3)
 		{
-			reverse_rorate(argc, stacks, "rra");
-			reverse_rorate(argc, stacks, "rra");
+			reverse_rorate(stacks, "rra");
+			reverse_rorate(stacks, "rra");
 		}
 	}
 }
 
-void	sort_five_elments(t_array *stacks, int argc)
+void	sort_list(int *stack, int size)
 {
-	int i;
+	int	i;
+	int	swap;
 
-	i = 0;
-	if (argc == 6)
+	while (size >= 0)
 	{
-		push_stacks(stacks, "pb");
-		push_stacks(stacks, "pb");
-		if (stacks->size_a == 3)
-			sort_three_elments(stacks, argc);
-		// if (stacks->stack_b[0] > stacks->stack_b[1])
-		// 	swap_stacks(stacks, "sa");
-		// push_stacks(stacks, "pa");
-		// push_stacks(stacks, "pa");
-		// reverse_rorate(argc, stacks, "rra");
-		// reverse_rorate(argc, stacks, "rra");
-		
-
+		i = 0;
+		while (i < size - 1)
+		{
+			if (stack[i] > stack[i + 1])
+			{
+				swap = stack [i];
+				stack[i] = stack [i + 1];
+				stack [i + 1] = swap;
+			}
+			i++;
+		}
+		size--;
 	}
+} 
+
+void print_stack(t_array *stack, int i)
+{
+	int index = 0;
+	if(i == 0)
+	{
+		printf("stack a  { ");
+		while (index < stack->size_a)
+		{
+			printf("%d ,", stack->stack_a[index]);
+			index++;
+		}
+		printf(" }\n");
+		return ;	
+	}
+	printf("stack b{ ");
+	while (index < stack->size_b)
+	{
+		printf("%d ,", stack->stack_b[index]);
+		index++;
+	}
+	printf(" }\n");
+	return ;
+		
 }
 
+void cpy_to_list(int size, t_array *stacks )
+{
+	int i;
+	int k;
+
+	int *list = malloc ((size) * sizeof(int));
+
+	i  = 0;
+	while (i < stacks->size_a)
+	{
+		list[i] = stacks->stack_a[i];
+		i++;
+	}
+	sort_list(list, stacks->size_a);
+	i = 0;
+	printf("\nlist_after{ ");
+	while (i < stacks->size_a)
+	{
+		printf("%d ,", list[i]);
+		i++;
+	}
+	printf(" }\n\n");
+	
+	int j = 0;
+	if (stacks->size_a > 16 && stacks->size_a < 150)
+	{
+		i = (stacks->size_a / 2) - 8;
+		k = (stacks->size_a / 2) - 8;
+		printf(" i = %d ,", i);
+		printf(" i = %d ,", (stacks->size_a / 2) + 8);
+		print_stack(stacks,0);
+		print_stack(stacks,1);
+		while (k < (stacks->size_a / 2) + 8)
+		{
+			j = 0;
+			while (list[i] != stacks->stack_a[j])
+				i++;
+			printf(" i  = %d\n ,", i);
+			if (stacks->stack_a[j] == list[i])
+			{
+				if (list[i] != stacks->stack_a[0])
+				{
+					if (j < stacks->size_a / 2 - 1)
+					{
+						reverse_rorate(stacks, "rra");
+						print_stack(stacks, 0);
+						printf("ana : %d\n", stacks->stack_a[j]);
+						print_stack(stacks, 0);
+						print_stack(stacks, 1);
+					}
+
+					if (j > stacks->size_a / 2 - 1)
+					{
+						rorate(stacks, "ra");
+						print_stack(stacks, 0);
+						printf("ana_in ra : %d\n", stacks->stack_a[j]);
+						print_stack(stacks, 0);
+						print_stack(stacks, 1);
+					}
+				}
+				push_stacks(stacks, "pb");
+			}
+			k++;
+		}
+		print_stack(stacks, 0);
+		print_stack(stacks, 1);
+		printf("\nlist{ ");
+	}
+	else
+		printf("bzaaaf");
+}
+void check_list(t_array *stacks)
+{
+	int i ;
+	
+	i  = 0;
+	
+	cpy_to_list(stacks->size_a,stacks);
+	
+}

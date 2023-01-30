@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/28 00:26:28 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/29 23:21:05 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,16 @@ int		ft_atoi(const char *str);
 void	exit_msg(char *msg);
 void	remove_top_stacks(int size, int *stack_name);
 void	reverse_top_stacks(int size, int *stack_name);
-void	rorate(int argc, t_array *stacks, char *inst);
-void	reverse_rorate_stacks(int argc, t_array *stacks, int *stack_name);
-void	reverse_rorate(int argc, t_array *stacks, char *inst);
+void	rorate(t_array *stacks, char *inst);
+void	reverse_rorate_stacks(t_array *stacks, int *stack_name);
+void	reverse_rorate(t_array *stacks, char *inst);
 void	swap_stacks(t_array *stacks, char *inst);
 void	push_stacks(t_array *stacks, char *inst);
 void	remove_top_stacks(int argc, int *stack_name);
 void	sort_five_elments(t_array *stacks, int argc);
 void	sort_three_elments(t_array *stacks,int argc);
 void	sort(t_array *stacks);
+void check_list(t_array *stacks);
+void print_stack(t_array *stack, int i);
 
 #endif
