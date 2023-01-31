@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 07:02:39 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/31 00:12:21 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/01/31 02:20:50 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,27 @@ void print_stack(t_array *stack, int i)
 		
 }
 
+int get_positions(t_array*stacks, int *list, int start, int end)
+{
+	int j = 0;
+	int i = start;
+	while(j < stacks->size_a)
+	{
+		while(i < end)
+		{
+			if (stacks->stack_a[j] == list[i])
+				return (j); 
+			else
+				return(-1);
+			i++;
+		}
+		j++;
+	}
+}
 void cpy_to_list(int size, t_array *stacks )
 {
-	int i;
-	int k;
+	int start;
+	int end;
 
 	int *list = malloc ((size) * sizeof(int));
 
@@ -116,54 +133,55 @@ void cpy_to_list(int size, t_array *stacks )
 		i++;
 	}
 	printf(" }\n\n");
+	start = (stacks->size_a / 2) - 8;
+	end = (stacks->size_a / 2) + 8;
 	
-	int j = 0;
-	if (stacks->size_a > 16 && stacks->size_a < 150)
-	{
-		i = (stacks->size_a / 2) - 8;
-		k = (stacks->size_a / 2) - 8;
-		printf(" i = %d ,", i);
-		printf(" i = %d ,", (stacks->size_a / 2) + 8);
-		print_stack(stacks,0);
-		print_stack(stacks,1);
-		while (k < (stacks->size_a / 2) + 8)
-		{
-			j = 0;
-			while (list[i] != stacks->stack_a[j])
-				i++;
-			printf(" i  = %d\n ,", i);
-			if (stacks->stack_a[j] == list[i])
-			{
-				if (list[i] != stacks->stack_a[0])
-				{
-					if (j < stacks->size_a / 2 - 1)
-					{
-						reverse_rorate(stacks, "rra");
-						print_stack(stacks, 0);
-						printf("ana : %d\n", stacks->stack_a[j]);
-						print_stack(stacks, 0);
-						print_stack(stacks, 1);
-					}
+	int index = get_positions(stacks, list, start, end);
+	printf("index :  %d", index);
+	// if (stacks->size_a > 16 && stacks->size_a < 150)
+	// {
+	// 	printf(" i = %d ,", i);
+	// 	printf(" i = %d ,", (stacks->size_a / 2) + 8);
+	// 	print_stack(stacks,0);
+	// 	print_stack(stacks,1);
+	// 	while (k < (stacks->size_a / 2) + 8)
+	// 	{
+	// 		j = 0;
+	// 		while (list[i] != stacks->stack_a[j])
+	// 			i++;
+	// 		printf(" i  = %d\n ,", i);
+	// 		if (stacks->stack_a[j] == list[i])
+	// 		{
+	// 			if (list[i] != stacks->stack_a[0])
+	// 			{
+	// 				if (j < stacks->size_a / 2 - 1)
+	// 				{
+	// 					reverse_rorate(stacks, "rra");
+	// 					print_stack(stacks, 0);
+	// 					printf("ana : %d\n", stacks->stack_a[j]);
+	// 					print_stack(stacks, 0);
+	// 					print_stack(stacks, 1);
+	// 				}
 
-					if (j > stacks->size_a / 2 - 1)
-					{
-						rorate(stacks, "ra");
-						print_stack(stacks, 0);
-						printf("ana_in ra : %d\n", stacks->stack_a[j]);
-						print_stack(stacks, 0);
-						print_stack(stacks, 1);
-					}
-				}
-				push_stacks(stacks, "pb");
-			}
-			k++;
-		}
-		print_stack(stacks, 0);
-		print_stack(stacks, 1);
-		printf("\nlist{ ");
-	}
-	else
-		printf("bzaaaf");
+	// 				if (j > stacks->size_a / 2 - 1)
+	// 				{
+	// 					rorate(stacks, "ra");
+	// 					print_stack(stacks, 0);
+	// 					printf("ana_in ra : %d\n", stacks->stack_a[j]);
+	// 					print_stack(stacks, 0);
+	// 					print_stack(stacks, 1);
+	// 				}
+	// 			}
+	// 			push_stacks(stacks, "pb");
+	// 		}
+	// 		k++;
+	// 	}
+	// 	print_stack(stacks, 0);
+	// 	print_stack(stacks, 1);
+	// 	printf("\nlist{ ");
+	// }
+	// else
+	// 	printf("bzaaaf");
 }
 void check_list(t_array *stacks)
 {
