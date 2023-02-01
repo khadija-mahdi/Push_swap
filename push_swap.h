@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/01 04:12:16 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 18:17:53 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	push_stack_b(t_array *stacks);
 void	push_to_stack_a(t_array *stacks);
 int		get_positions(t_array *stacks, int start, int end);
 void	update_range(int *size_max, int *start,int *end );
+void	push_to_stack_b(t_array *stacks, int *size_max,int *start, int *end);
 
 #endif

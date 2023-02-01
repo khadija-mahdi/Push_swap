@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/01 06:58:03 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 20:02:39 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,11 @@ int	main(int argc, char **argv)
 	// print_stack(stacks, 2);
 	// print_stack(stacks,1);
 	// push_stack_b(stacks);
+	sort_three_elments(stacks, argc);
 	// printf("size_list --> %d",stacks->list_size);
-	push_to_stack_a(stacks);
+	// push_to_stack_a(stacks);
 	// print_stack(stacks, 0);
 	// print_stack(stacks, 2);
-	// print_stack(stacks,1);
+	// print_stack(stacks,1);->
 
 }

@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 07:02:39 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/01 18:12:58 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 19:59:05 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,16 @@ void update_range(int *size_max, int *start,int *end )
 		*end = *size_max - 1;
 }
 
-void push_to_stack_b(t_array *stacks, int *size_max,int *start, int *end)
+void	push_to_stack_b(t_array *stacks, int *size_max,int *start, int *end)
 {
-	while ((stacks->list[*start] > stacks->stack_a[0] || stacks->list[*end] < stacks->stack_a[0]) && index > stacks->size_a / 2 - 1)
+	int	index;
+
+	index = get_positions(stacks, *start, *end);
+	while ((stacks->list[*start] > stacks->stack_a[0] || stacks->list[*end]
+			< stacks->stack_a[0]) && index > stacks->size_a / 2 - 1)
 		reverse_rotate(stacks, "rra");
-	while ((stacks->list[*start] > stacks->stack_a[0] || stacks->list[*end] < stacks->stack_a[0]) && index <= stacks->size_a / 2 - 1)
+	while ((stacks->list[*start] > stacks->stack_a[0] || stacks->list[*end]
+			< stacks->stack_a[0]) && index <= stacks->size_a / 2 - 1)
 		rotate(stacks, "ra");
 	push_stacks(stacks, "pb");
 	if (stacks->stack_b[0] < stacks->list[*size_max / 2 - 1])
@@ -90,50 +95,48 @@ void push_stack_b(t_array *stacks)
 	{
 		index = get_positions(stacks, start, end);
 		if (index == -1)
-		{
 			update_range(&size_max, &start, &end);
-		}
 		else
 			push_to_stack_b(stacks, &size_max, &start, &end);
 	}
 }
 
-void push_to_stack_a(t_array *stacks)
-{
-	int down;
-	int i;
-	int count;
+// void push_to_stack_a(t_array *stacks)
+// {
+// 	int down;
+// 	int i;
+// 	int count;
 
-	down = 0;
-	i = 0;
-	count = stacks->list_size - 1;
-	// push_stack_b(stacks);
-	while (stacks->size_b > 0)
-	{
-		while (stacks->list[count] == stacks->stack_b[0])
-		{
-			push_stacks(stacks, "pa");
-			reverse_rotate(stacks, "rra");
-			down++;
-		}
-		while(stacks->list[count] != stacks->stack_b[0])
-		{
-			if (down == 0)
-			{
-				push_stacks(stacks, "pa");
-				down++;
-			}
-			else
-			{
-				if (stacks->stack_a[down] < stacks->stack_b[i])
-				{
-					push_stacks(stacks, "pa");
-					reverse_rotate(stacks, "rra");
-					down++;
-				}
-			}
-		}
-		count--;
-		printf("%d",stacks->list[stacks->list_size - 1]);
-	}
-}
+// 	down = 0;
+// 	i = 0;
+// 	count = stacks->list_size - 1;
+// 	push_stack_b(stacks);
+	// while (stacks->size_b > 0)
+	// {
+		// while (stacks->list[count] == stacks->stack_b[0])
+		// {
+		// 	push_stacks(stacks, "pa");
+		// 	reverse_rotate(stacks, "rra");
+		// 	down++;
+		// }
+	// 	while(stacks->list[count] != stacks->stack_b[0])
+	// 	{
+	// 		if (down == 0)
+	// 		{
+	// 			push_stacks(stacks, "pa");
+	// 			down++;
+	// 		}
+	// 		else
+	// 		{
+	// 			if (stacks->stack_a[down] < stacks->stack_b[i])
+	// 			{
+	// 				push_stacks(stacks, "pa");
+	// 				reverse_rotate(stacks, "rra");
+	// 				down++;
+	// 			}
+	// 		}
+	// 	}
+	// 	count--;
+	// 	printf("%d",stacks->list[stacks->list_size - 1]);
+// 	}
+
