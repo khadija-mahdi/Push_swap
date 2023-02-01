@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:47:17 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/25 06:32:26 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 04:40:35 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,19 @@ void	exit_msg(char *msg)
 	exit(1);
 }
 
-void	is_empty(int argc, int *stack_name)
+int get_positions(t_array *stacks, int start, int end)
 {
-	int	i;
-	int	is_empty;
-
-	is_empty = 1;
-	i = 0;
-	while (i < argc - 1)
+	int j = 0;
+	while(j < stacks->size_a)
 	{
-		if (stack_name[i] != 0)
+		int i = start;
+		while(i <= end)
 		{
-			is_empty = 0;
-			break ;
+			if (stacks->stack_a[j] == stacks->list[i])
+				return (j);
+			i++;
 		}
-		i++;
+		j++;
 	}
-	if (is_empty == 1)
-		exit_msg("empty \n");
+	return(-1);
 }

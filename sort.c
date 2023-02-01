@@ -6,13 +6,13 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 07:02:39 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/31 02:20:50 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 07:32:20 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three_elments(t_array *stacks, int argc)
+void sort_three_elments(t_array *stacks, int argc)
 {
 	int i;
 	int n1;
@@ -29,166 +29,113 @@ void	sort_three_elments(t_array *stacks, int argc)
 			swap_stacks(stacks, "sa");
 		else if (n1 < n2 && n2 > n3 && n3 > n1)
 		{
-			reverse_rorate(stacks, "rra");
+			reverse_rotate(stacks, "rra");
 			swap_stacks(stacks, "sa");
 		}
 		else if (n1 > n2 && n2 > n3)
 		{
 			swap_stacks(stacks, "sa");
-			reverse_rorate(stacks, "rra");
+			reverse_rotate(stacks, "rra");
 		}
 		else if (n1 < n2 && n2 > n3)
-			reverse_rorate(stacks, "rra");
+			reverse_rotate(stacks, "rra");
 		else if (n1 > n2 && n2 < n3)
 		{
-			reverse_rorate(stacks, "rra");
-			reverse_rorate(stacks, "rra");
+			reverse_rotate(stacks, "rra");
+			reverse_rotate(stacks, "rra");
 		}
 	}
 }
 
-void	sort_list(int *stack, int size)
+void update_range(int *size_max, int *start,int *end )
 {
-	int	i;
-	int	swap;
-
-	while (size >= 0)
+	if (*size_max > 16 && *size_max < 150)
 	{
-		i = 0;
-		while (i < size - 1)
-		{
-			if (stack[i] > stack[i + 1])
-			{
-				swap = stack [i];
-				stack[i] = stack [i + 1];
-				stack [i + 1] = swap;
-			}
-			i++;
-		}
-		size--;
+		*start -= 8;
+		*end += 8;
 	}
-} 
-
-void print_stack(t_array *stack, int i)
-{
-	int index = 0;
-	if(i == 0)
+	else if (*size_max >= 150)
 	{
-		printf("stack a  { ");
-		while (index < stack->size_a)
-		{
-			printf("%d ,", stack->stack_a[index]);
-			index++;
-		}
-		printf(" }\n");
-		return ;	
+		*start -= 16;
+		*end += 16;
 	}
-	printf("stack b{ ");
-	while (index < stack->size_b)
-	{
-		printf("%d ,", stack->stack_b[index]);
-		index++;
-	}
-	printf(" }\n");
-	return ;
-		
+	if (*start <= 0)
+		*start = 0;
+	if (*end > *size_max - 1)
+		*end = *size_max - 1;
 }
 
-int get_positions(t_array*stacks, int *list, int start, int end)
-{
-	int j = 0;
-	int i = start;
-	while(j < stacks->size_a)
-	{
-		while(i < end)
-		{
-			if (stacks->stack_a[j] == list[i])
-				return (j); 
-			else
-				return(-1);
-			i++;
-		}
-		j++;
-	}
-}
-void cpy_to_list(int size, t_array *stacks )
+// void push_to_stack_b(t_array *stacks)
+// {
+	
+// }
+
+void push_stack_b(t_array *stacks)
 {
 	int start;
 	int end;
+	int size_max;
+	int index;
 
-	int *list = malloc ((size) * sizeof(int));
-
-	i  = 0;
-	while (i < stacks->size_a)
+	size_max = stacks->size_a;
+	start = (size_max / 2) - 8;
+	end = (size_max / 2) + 8;
+	while (stacks->size_a > 0)
 	{
-		list[i] = stacks->stack_a[i];
-		i++;
+		index = get_positions(stacks, start, end);
+		if (index == -1)
+		{
+			update_range(&size_max, &start, &end);
+		}
+		else
+		{
+			while ((stacks->list[start] > stacks->stack_a[0] || stacks->list[end] < stacks->stack_a[0]) && index > stacks->size_a / 2 - 1)
+				reverse_rotate(stacks, "rra");
+			while ((stacks->list[start] > stacks->stack_a[0] || stacks->list[end] < stacks->stack_a[0]) && index <= stacks->size_a / 2 - 1)
+				rotate(stacks, "ra");
+			push_stacks(stacks, "pb");
+			if (stacks->stack_b[0] < stacks->list[size_max / 2 - 1])
+				rotate(stacks, "rb");
+		}
 	}
-	sort_list(list, stacks->size_a);
-	i = 0;
-	printf("\nlist_after{ ");
-	while (i < stacks->size_a)
-	{
-		printf("%d ,", list[i]);
-		i++;
-	}
-	printf(" }\n\n");
-	start = (stacks->size_a / 2) - 8;
-	end = (stacks->size_a / 2) + 8;
-	
-	int index = get_positions(stacks, list, start, end);
-	printf("index :  %d", index);
-	// if (stacks->size_a > 16 && stacks->size_a < 150)
-	// {
-	// 	printf(" i = %d ,", i);
-	// 	printf(" i = %d ,", (stacks->size_a / 2) + 8);
-	// 	print_stack(stacks,0);
-	// 	print_stack(stacks,1);
-	// 	while (k < (stacks->size_a / 2) + 8)
-	// 	{
-	// 		j = 0;
-	// 		while (list[i] != stacks->stack_a[j])
-	// 			i++;
-	// 		printf(" i  = %d\n ,", i);
-	// 		if (stacks->stack_a[j] == list[i])
-	// 		{
-	// 			if (list[i] != stacks->stack_a[0])
-	// 			{
-	// 				if (j < stacks->size_a / 2 - 1)
-	// 				{
-	// 					reverse_rorate(stacks, "rra");
-	// 					print_stack(stacks, 0);
-	// 					printf("ana : %d\n", stacks->stack_a[j]);
-	// 					print_stack(stacks, 0);
-	// 					print_stack(stacks, 1);
-	// 				}
-
-	// 				if (j > stacks->size_a / 2 - 1)
-	// 				{
-	// 					rorate(stacks, "ra");
-	// 					print_stack(stacks, 0);
-	// 					printf("ana_in ra : %d\n", stacks->stack_a[j]);
-	// 					print_stack(stacks, 0);
-	// 					print_stack(stacks, 1);
-	// 				}
-	// 			}
-	// 			push_stacks(stacks, "pb");
-	// 		}
-	// 		k++;
-	// 	}
-	// 	print_stack(stacks, 0);
-	// 	print_stack(stacks, 1);
-	// 	printf("\nlist{ ");
-	// }
-	// else
-	// 	printf("bzaaaf");
 }
-void check_list(t_array *stacks)
+
+void push_to_stack_a(t_array *stacks)
 {
-	int i ;
-	
-	i  = 0;
-	
-	cpy_to_list(stacks->size_a,stacks);
-	
+	int down;
+	int i;
+	int count;
+
+	down = 0;
+	i = 0;
+	count = stacks->list_size - 1;
+	// push_stack_b(stacks);
+	while (stacks->size_b > 0)
+	{
+		while (stacks->list[count] == stacks->stack_b[0])
+		{
+			push_stacks(stacks, "pa");
+			reverse_rotate(stacks, "rra");
+			down++;
+		}
+		while(stacks->list[count] != stacks->stack_b[0])
+		{
+			if (down == 0)
+			{
+				push_stacks(stacks, "pa");
+				down++;
+			}
+			else
+			{
+				if (stacks->stack_a[down] < stacks->stack_b[i])
+				{
+					push_stacks(stacks, "pa");
+					reverse_rotate(stacks, "rra");
+					down++;
+				}
+			}
+		}
+		count--;
+		printf("%d",stacks->list[stacks->list_size - 1]);
+	}
 }

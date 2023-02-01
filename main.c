@@ -6,50 +6,62 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/30 06:23:19 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 06:58:03 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stacks(t_array *stacks)
+void print_stack(t_array *stack, int i)
 {
-	int	j;
-
-	printf("-------------------------------\n");
-	j = 0;
-	while (j < stacks->size_b)
+	int index = 0;
+	if (i == 0)
 	{
-		printf("stack_b  ---->: %d\n", stacks->stack_b[j]);
-		j++;
+		printf("\nstack a  { ");
+		while (index < stack->size_a)
+		{
+			printf("%d ,", stack->stack_a[index]);
+			index++;
+		}
+		printf(" }\n");
+		return;
 	}
-	printf("-------------------------------\n");
-	j = 0;
-	while ( j < stacks->size_a)
+	else if (i == 1)
 	{
-		printf("stack_a  ---->: %d\n", stacks->stack_a[j]);
-		j++;
+		printf("\nstack b{ ");
+		while (index < stack->size_b)
+		{
+			printf("%d ,", stack->stack_b[index]);
+			index++;
+		}
+		printf(" }\n");
 	}
-	printf("-------------------------------\n");
-	printf("size_b----> %d\n", stacks->size_b);
-	printf("size_a----> %d\n", stacks->size_a);
-	printf("-------------------------------\n");
+	else
+	{
+		index = 0;
+		printf("\nlist { ");
+		while (index < stack->list_size)
+		{
+			printf("%d ,",stack->list[index]);
+			index++;
+		}
+		printf(" }\n");
+		return;
+	}
 }
 
-t_array	*init_stacks(int argc, char **argv)
+t_array	*init_stacks(int argc, char **argv, t_array	*array)
 {
-	t_array	*array;
 	int		i;
 	int		j;
 
 	array = malloc(sizeof(t_array));
-	if (!array)
-		exit_msg("ERROR maloc !!");
-	array->stack_b = malloc((argc) * sizeof(int));
-	array->new_stack = malloc((argc - 1) * sizeof(int));
-	array->stack_a = malloc(argc * sizeof(int));
+	array->stack_b = malloc((argc - 1) * sizeof(int));
+	array->stack_a = malloc((argc - 1) * sizeof(int));
+	array->list = malloc((argc - 1) * sizeof(int));
 	array->size_a = 0;
 	array->size_b = 0;
+	array->list_size = 0;
 	i = 1;
 	j = 0;
 	while (j < argc - 1)
@@ -57,10 +69,13 @@ t_array	*init_stacks(int argc, char **argv)
 		if (argv[i][0] == '\0')
 			exit_msg("Error_empty \n");
 		array->stack_a[j] = ft_atoi(argv[i]);
+		array->list[j] = array->stack_a[j];
 		array->size_a++;
-		i++;
+		array->list_size++;
 		j++;
+		i++;
 	}
+	sort_list(array->list, array->list_size);
 	return (array);
 }
 
@@ -70,48 +85,18 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	stacks = init_stacks(argc, argv);
+	stacks = init_stacks(argc, argv, stacks);
 	check_digits(argv, argc);
 	check_duplicate(argc, argv);
 	check_sorted(argc, stacks);
-	check_list(stacks);
+	// print_stack(stacks, 0);
+	// print_stack(stacks, 2);
+	// print_stack(stacks,1);
+	// push_stack_b(stacks);
+	// printf("size_list --> %d",stacks->list_size);
+	push_to_stack_a(stacks);
+	// print_stack(stacks, 0);
+	// print_stack(stacks, 2);
+	// print_stack(stacks,1);
 
-
-
-
-
-
-
-
-	
-	// int i = 0;
-	// while (i < 1000000)
-	// {
-	// 	push_stacks(stacks, "pb");
-	// 	push_stacks(stacks, "pb");
-	// 	push_stacks(stacks, "pb");
-	// 	push_stacks(stacks, "pb");
-	// 	swap_stacks(stacks, "sa");
-	// 	swap_stacks(stacks, "sb");
-	// 	rorate(stacks, "ra");
-	// 	rorate(stacks, "rb");
-	// 	rorate(stacks, "rr");
-	// 	reverse_rorate(stacks, "rra");
-	// 	reverse_rorate(stacks, "rrb");
-	// 	reverse_rorate(stacks, "rrr");
-	// 	push_stacks(stacks, "pa");
-	// 	i++;
-	// }
-	
-	// int j = 0;
-	// while (j < stacks->size_a / 2)
-	// {
-	// 	printf(" size_list : %d\n", (stacks->size_a));
-	// 	reverse_rorate(stacks, "rra");
-	// 	j++;
-	// }
-	// reverse_rorate(stacks, "rra");
-	// sort_three_elments(stacks, argc);
-
-	// print_stacks(stacks);
 }

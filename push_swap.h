@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/29 23:21:05 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 04:12:16 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ typedef struct s_array
 {
 	int	*stack_a;
 	int	*stack_b;
-	int	*new_stack;
+	int *list;
 	int	size_a;
 	int	size_b;
+	int	list_size;
 }			t_array;
 
 void	check_opera(char **argv, int index, int j);
@@ -36,24 +37,21 @@ void	check_duplicate(int argc, char **argv);
 int		ft_putstr(char *s);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strlen(const char *s);
-void	ft_sort_int_tab(int *tab, int size);
+void	sort_list(int *stack, int size);
 void	ft_swap(int *a, int *b);
 int		ft_isdigit(int c);
 int		count(const char *str, int sym);
 int		ft_atoi(const char *str);
 void	exit_msg(char *msg);
-void	remove_top_stacks(int size, int *stack_name);
-void	reverse_top_stacks(int size, int *stack_name);
-void	rorate(t_array *stacks, char *inst);
-void	reverse_rorate_stacks(t_array *stacks, int *stack_name);
-void	reverse_rorate(t_array *stacks, char *inst);
+void	rotate(t_array *stacks, char *inst);
+void	reverse_rotate(t_array *stacks, char *inst);
 void	swap_stacks(t_array *stacks, char *inst);
 void	push_stacks(t_array *stacks, char *inst);
-void	remove_top_stacks(int argc, int *stack_name);
-void	sort_five_elments(t_array *stacks, int argc);
 void	sort_three_elments(t_array *stacks,int argc);
-void	sort(t_array *stacks);
-void check_list(t_array *stacks);
-void print_stack(t_array *stack, int i);
+void 	print_stack(t_array *stack, int i);
+void	push_stack_b(t_array *stacks);
+void	push_to_stack_a(t_array *stacks);
+int		get_positions(t_array *stacks, int start, int end);
+void	update_range(int *size_max, int *start,int *end );
 
 #endif
