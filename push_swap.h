@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/01 18:17:53 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 21:18:14 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	rotate(t_array *stacks, char *inst);
 void	reverse_rotate(t_array *stacks, char *inst);
 void	swap_stacks(t_array *stacks, char *inst);
 void	push_stacks(t_array *stacks, char *inst);
-void	sort_three_elments(t_array *stacks,int argc);
+void	sort_three_elments(t_array *stacks);
+void	sort_tow_three(t_array *stacks, int argc)
 void 	print_stack(t_array *stack, int i);
 void	push_stack_b(t_array *stacks);
 void	push_to_stack_a(t_array *stacks);

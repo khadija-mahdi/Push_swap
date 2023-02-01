@@ -6,13 +6,41 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 07:02:39 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/01 19:59:05 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 21:17:50 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sort_three_elments(t_array *stacks, int argc)
+void sort_three_elments(t_array *stacks)
+{
+	int	n1;
+	int	n2;
+	int	n3;
+
+	n1 = 0;
+	n2 = 0;
+	n3 = 0;
+	if (n1 < n2 && n2 > n3 && n3 > n1)
+	{
+		reverse_rotate(stacks, "rra");
+		swap_stacks(stacks, "sa");
+	}
+	else if (n1 > n2 && n2 > n3)
+	{
+		swap_stacks(stacks, "sa");
+		reverse_rotate(stacks, "rra");
+	}
+	else if (n1 < n2 && n2 > n3)
+		reverse_rotate(stacks, "rra");
+	else if (n1 > n2 && n2 < n3)
+	{
+		reverse_rotate(stacks, "rra");
+		reverse_rotate(stacks, "rra");
+	}
+}
+
+void sort_tow_three(t_array *stacks, int argc)
 {
 	int i;
 	int n1;
@@ -27,24 +55,11 @@ void sort_three_elments(t_array *stacks, int argc)
 		n3 = stacks->stack_a[2];
 		if (n1 > n2 && n2 < n3 && n3 > n1)
 			swap_stacks(stacks, "sa");
-		else if (n1 < n2 && n2 > n3 && n3 > n1)
-		{
-			reverse_rotate(stacks, "rra");
-			swap_stacks(stacks, "sa");
-		}
-		else if (n1 > n2 && n2 > n3)
-		{
-			swap_stacks(stacks, "sa");
-			reverse_rotate(stacks, "rra");
-		}
-		else if (n1 < n2 && n2 > n3)
-			reverse_rotate(stacks, "rra");
-		else if (n1 > n2 && n2 < n3)
-		{
-			reverse_rotate(stacks, "rra");
-			reverse_rotate(stacks, "rra");
-		}
+		else
+			sort_three_elments(stacks);
 	}
+	else if(stacks->size_a == 2)
+		swap_stacks(stacks, "sa");
 }
 
 void update_range(int *size_max, int *start,int *end )
