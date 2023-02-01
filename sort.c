@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 07:02:39 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/01 07:32:20 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/01 18:12:58 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,16 @@ void update_range(int *size_max, int *start,int *end )
 		*end = *size_max - 1;
 }
 
-// void push_to_stack_b(t_array *stacks)
-// {
-	
-// }
+void push_to_stack_b(t_array *stacks, int *size_max,int *start, int *end)
+{
+	while ((stacks->list[*start] > stacks->stack_a[0] || stacks->list[*end] < stacks->stack_a[0]) && index > stacks->size_a / 2 - 1)
+		reverse_rotate(stacks, "rra");
+	while ((stacks->list[*start] > stacks->stack_a[0] || stacks->list[*end] < stacks->stack_a[0]) && index <= stacks->size_a / 2 - 1)
+		rotate(stacks, "ra");
+	push_stacks(stacks, "pb");
+	if (stacks->stack_b[0] < stacks->list[*size_max / 2 - 1])
+		rotate(stacks, "rb");
+}
 
 void push_stack_b(t_array *stacks)
 {
@@ -88,15 +94,7 @@ void push_stack_b(t_array *stacks)
 			update_range(&size_max, &start, &end);
 		}
 		else
-		{
-			while ((stacks->list[start] > stacks->stack_a[0] || stacks->list[end] < stacks->stack_a[0]) && index > stacks->size_a / 2 - 1)
-				reverse_rotate(stacks, "rra");
-			while ((stacks->list[start] > stacks->stack_a[0] || stacks->list[end] < stacks->stack_a[0]) && index <= stacks->size_a / 2 - 1)
-				rotate(stacks, "ra");
-			push_stacks(stacks, "pb");
-			if (stacks->stack_b[0] < stacks->list[size_max / 2 - 1])
-				rotate(stacks, "rb");
-		}
+			push_to_stack_b(stacks, &size_max, &start, &end);
 	}
 }
 
