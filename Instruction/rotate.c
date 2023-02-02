@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 04:06:36 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/01 05:14:41 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/02 04:07:12 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	*rotate_stacks(int *stack, int *size)
 	int	i;
 	int	j;
 	int	*new_stack;
-
+	
+	if(*size <= 1)
+		return (stack);
 	new_stack = malloc((*size) * sizeof(int));
 	i = 1;
 	j = 0;
@@ -50,6 +52,7 @@ void	rotate(t_array *stacks, char *inst)
 		stacks->stack_b = rotate_stacks(stacks->stack_b, &stacks->size_b);
 		ft_putstr("rr\n");
 	}
+	// show(stacks, 1);
 }
 
 int	*reverse_rotate_stack(int *stack, int *size)
@@ -58,11 +61,13 @@ int	*reverse_rotate_stack(int *stack, int *size)
 	int	j;
 	int	*new_stack;
 
+	if(*size <= 1)
+		return (stack);
 	new_stack = malloc((*size) * sizeof(int));
 	new_stack[0] = stack[*size - 1];
 	i = 0;
 	j = 1;
-	while (i < (*size))
+	while (i < (*size - 1))
 	{
 		new_stack[j] = stack[i];
 		i++;
@@ -94,4 +99,5 @@ void	reverse_rotate(t_array *stacks, char *inst)
 				&stacks->size_b);
 		ft_putstr("rrr\n");
 	}
+	// show(stacks, 1);
 }

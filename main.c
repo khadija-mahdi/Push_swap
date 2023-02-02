@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/01 20:02:39 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/02 04:12:41 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,29 @@ int	main(int argc, char **argv)
 	check_digits(argv, argc);
 	check_duplicate(argc, argv);
 	check_sorted(argc, stacks);
+	
 	// print_stack(stacks, 0);
 	// print_stack(stacks, 2);
-	// print_stack(stacks,1);
-	// push_stack_b(stacks);
-	sort_three_elments(stacks, argc);
-	// printf("size_list --> %d",stacks->list_size);
+	// print_stack(stacks, 1);
+	
+	sort_tow_three(stacks);
+	
+	push_stack_b(stacks);
+	
+	// print_stack(stacks, 0);
+	// print_stack(stacks, 2);
+	// print_stack(stacks, 1);
+	
+	push_to_stack_a(stacks);
+
+	// print_stack(stacks, 0);
+	// print_stack(stacks, 2);
+	// print_stack(stacks, 1);
+	// reverse_rotate(stacks, "rra");
+	// print_stack(stacks, 0);
+	// printf("stack_a %d\n",stacks->stack_a[0]);
+	// printf("list %d",stacks->list[0]);
 	// push_to_stack_a(stacks);
-	// print_stack(stacks, 0);
-	// print_stack(stacks, 2);
-	// print_stack(stacks,1);->
+	// show(stacks, 0);
 
 }
