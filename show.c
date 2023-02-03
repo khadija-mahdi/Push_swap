@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:26:20 by anaimi            #+#    #+#             */
-/*   Updated: 2023/02/01 21:32:35 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/02 07:02:12 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,7 @@ void	show(t_array *stack, int clear)
 	printf("|-----------------------|\n");
 	printf("|a          |b          |\n");
 	printf("|-----------------------|\n");
-	usleep(100000);
+	usleep(100);
 	if (clear)
-	{
-		// getchar();
 		system("clear");
-	}
 }

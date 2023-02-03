@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 04:06:36 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/02 04:07:12 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/02 07:10:08 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	*rotate_stacks(int *stack, int *size)
 	int	i;
 	int	j;
 	int	*new_stack;
-	
-	if(*size <= 1)
+
+	if (*size <= 1)
 		return (stack);
 	new_stack = malloc((*size) * sizeof(int));
 	i = 1;
@@ -61,7 +61,7 @@ int	*reverse_rotate_stack(int *stack, int *size)
 	int	j;
 	int	*new_stack;
 
-	if(*size <= 1)
+	if (*size <= 1)
 		return (stack);
 	new_stack = malloc((*size) * sizeof(int));
 	new_stack[0] = stack[*size - 1];

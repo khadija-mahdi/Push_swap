@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:16 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/02 02:55:04 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/03 04:49:58 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_array
 {
 	int	*stack_a;
 	int	*stack_b;
-	int *list;
+	int	*list;
 	int	size_a;
 	int	size_b;
 	int	list_size;
@@ -49,15 +49,19 @@ void	swap_stacks(t_array *stacks, char *inst);
 void	push_stacks(t_array *stacks, char *inst);
 void	sort_three_elments(t_array *stacks);
 void	sort_tow_three(t_array *stacks);
-void 	print_stack(t_array *stack, int i);
+void	print_stack(t_array *stack, int i);
 void	push_stack_b(t_array *stacks);
 void	push_to_stack_a(t_array *stacks);
 int		get_positions(t_array *stacks, int start, int end);
-void	update_range(int *size_max, int *start,int *end );
-void	push_to_stack_b(t_array *stacks, int *size_max,int *start, int *end);
-int		get_top_b_pos(t_array *stacks,int top_b);
-
-
+void	update_range(int *size_max, int *start, int *end );
+int		get_index(t_array *stacks, int top_b);
+void	check_push_a(t_array *stacks, int *top_b, int *down, int *index);
+void	push_sorted_a(t_array *stacks, int *top_b, int *down, int *index);
+void	push_to_stack_a(t_array *stacks);
+void	val_start_end(int *size_max, int *start, int *end);
+int		get_index_a(t_array *stacks, int min_a);
+void	sort_short_elments(t_array *stacks);
+void	sort_five_elemnts(t_array *stacks);
 void	show(t_array *stack, int clear);
 
 #endif

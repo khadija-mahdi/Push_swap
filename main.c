@@ -6,15 +6,17 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/02 04:12:41 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/03 08:20:35 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_stack(t_array *stack, int i)
+void	print_stack(t_array *stack, int i)
 {
-	int index = 0;
+	int	index;
+
+	index = 0;
 	if (i == 0)
 	{
 		printf("\nstack a  { ");
@@ -24,7 +26,7 @@ void print_stack(t_array *stack, int i)
 			index++;
 		}
 		printf(" }\n");
-		return;
+		return ;
 	}
 	else if (i == 1)
 	{
@@ -42,18 +44,18 @@ void print_stack(t_array *stack, int i)
 		printf("\nlist { ");
 		while (index < stack->list_size)
 		{
-			printf("%d ,",stack->list[index]);
+			printf("%d ,", stack->list[index]);
 			index++;
 		}
 		printf(" }\n");
-		return;
+		return ;
 	}
 }
 
 t_array	*init_stacks(int argc, char **argv, t_array	*array)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	array = malloc(sizeof(t_array));
 	array->stack_b = malloc((argc - 1) * sizeof(int));
@@ -83,35 +85,18 @@ int	main(int argc, char **argv)
 {
 	t_array	*stacks;
 
+	stacks = NULL;
 	if (argc < 2)
 		return (0);
 	stacks = init_stacks(argc, argv, stacks);
 	check_digits(argv, argc);
 	check_duplicate(argc, argv);
 	check_sorted(argc, stacks);
-	
-	// print_stack(stacks, 0);
-	// print_stack(stacks, 2);
-	// print_stack(stacks, 1);
-	
 	sort_tow_three(stacks);
-	
+	sort_short_elments(stacks);
 	push_stack_b(stacks);
-	
-	// print_stack(stacks, 0);
-	// print_stack(stacks, 2);
-	// print_stack(stacks, 1);
-	
 	push_to_stack_a(stacks);
-
 	// print_stack(stacks, 0);
-	// print_stack(stacks, 2);
 	// print_stack(stacks, 1);
-	// reverse_rotate(stacks, "rra");
-	// print_stack(stacks, 0);
-	// printf("stack_a %d\n",stacks->stack_a[0]);
-	// printf("list %d",stacks->list[0]);
-	// push_to_stack_a(stacks);
 	// show(stacks, 0);
-
 }
