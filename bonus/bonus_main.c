@@ -6,38 +6,11 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 01:42:40 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/04 07:15:08 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 08:35:10 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-
-void print_stack(t_stack *stack, int i)
-{
-	int index = 0;
-	if (i == 0)
-	{
-		printf("\nstack a  { ");
-		while (index < stack->size_a)
-		{
-			printf("%d ,", stack->stack_a[index]);
-			index++;
-		}
-		printf(" }\n");
-		return;
-	}
-	else if (i == 1)
-	{
-		printf("\nstack b{ ");
-		while (index < stack->size_b)
-		{
-			printf("%d ,", stack->stack_b[index]);
-			index++;
-		}
-		printf(" }\n");
-	}
-}
 
 void	exit_msg(char *msg)
 {
