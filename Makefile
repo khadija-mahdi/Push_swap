@@ -7,17 +7,20 @@ SRC= ./Mandatory/Instruction/rotate.c\
 	./libft/utils.c\
 	./libft/libft_utils.c \
 	./Mandatory/main.c\
-	./Mandatory/parsing.c \
 	./Mandatory/push_swap.c\
 	./Mandatory/sort/short_sort.c\
 	./Mandatory/sort/long_sort.c \
+	parsing.c
 
 BONUS_SRC= ./bonus/bonus_main.c\
 		./libft/utils.c\
 		./libft/libft_utils.c\
 		./bonus/get_next_line/get_next_line.c\
 		./bonus/get_next_line/get_next_line_utils.c\
-		./bonus/bonus_rotate.c ./bonus/bonus_swap_push.c 
+		./bonus/bonus_rotate.c ./bonus/bonus_swap_push.c \
+		./bonus/check_errors.c\
+		parsing.c
+
 OBJ= $(SRC:.c=.o)
 
 OBJ_BONUS= $(BONUS_SRC:.c=.o)

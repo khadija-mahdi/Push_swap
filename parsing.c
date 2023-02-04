@@ -6,11 +6,13 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:47:24 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/04 01:24:18 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 08:53:28 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./Mandatory/push_swap.h"
+
+#include "./bonus/checker.h"
 
 void	check_opera(char **argv, int index, int j)
 {

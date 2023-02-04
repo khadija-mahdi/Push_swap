@@ -6,43 +6,16 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 01:42:40 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/04 08:35:10 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 09:37:54 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	exit_msg(char *msg)
-{
-	ft_putstr(msg);
-	exit(1);
-}
-
-void	check_sorted(t_stack *stack)
-{
-	int	i;
-	int	is_sorted;
-
-	is_sorted = 1;
-	i = 0;
-	while (i < stack->size_a - 1)
-	{
-		if (stack->stack_a[i] > stack->stack_a[i + 1])
-		{
-			is_sorted = 0;
-			ft_putstr("KO\n");
-			break ;
-		}
-		i++;
-	}
-	if (is_sorted == 1)
-		ft_putstr("OK\n");
-}
-
 t_stack	*init_stack_a(int argc, char **argv, t_stack *stacks)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	stacks = malloc(sizeof(t_stack));
 	stacks->stack_a = malloc((argc - 1) * sizeof(int));
@@ -50,7 +23,7 @@ t_stack	*init_stack_a(int argc, char **argv, t_stack *stacks)
 	i = 1;
 	j = 0;
 	stacks->size_a = 0;
-	stacks->size_a = 0;
+	stacks->size_b = 0;
 	while (j < argc - 1)
 	{
 		if (argv[i][0] == '\0')
@@ -63,9 +36,8 @@ t_stack	*init_stack_a(int argc, char **argv, t_stack *stacks)
 	return (stacks);
 }
 
-void	cheker(t_stack *stacks , char **inst)
+void	cheker(t_stack *stacks, char **inst)
 {
-	
 	if (*inst && !ft_strcmp(*inst, "sb\n"))
 		b_swap_stacks(stacks, "sb");
 	else if (*inst && !ft_strcmp(*inst, "ss\n"))
@@ -86,7 +58,7 @@ void	cheker(t_stack *stacks , char **inst)
 		b_reverse_rotate(stacks, "rrr");
 }
 
-int is_instruction(char **inst)
+int	is_instruction(char **inst)
 {
 	if (!ft_strcmp(*inst, "sa\n"))
 		return (1);
@@ -114,37 +86,45 @@ int is_instruction(char **inst)
 		return (0);
 }
 
-int main(int argc, char **argv)
+void	check_elemntes(t_stack *stacks, char **inst)
 {
-	t_stack *stacks;
-	char *inst;
-	int isnt_inst;
+	int		isnt_inst;
+	int		i;
+
+	isnt_inst = 0;
+	i = 0;
+	while (i < stacks->size_a - 1)
+	{
+		*inst = get_next_line(0);
+		if (*inst != NULL)
+		{
+			if (*inst && !ft_strcmp(*inst, "sa\n"))
+				b_swap_stacks(stacks, "sa");
+			if (!(is_instruction(inst)))
+				isnt_inst++;
+			else
+				cheker(stacks, inst);
+		}
+		if (isnt_inst != 0)
+			exit_msg("Error\n");
+		else
+		{
+			b_check_sorted(stacks);
+			exit(0);
+		}
+	}
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	*stacks;
+	char	*inst;
 
 	stacks = NULL;
-	isnt_inst = 0;
-	
 	if (argc < 2)
 		return (0);
 	stacks = init_stack_a(argc, argv, stacks);
-	int i = 0;
-	while (i < stacks->size_a - 1)
-	{
-		inst = get_next_line(0);
-		if (inst != NULL)
-		{
-			if (inst && !ft_strcmp(inst, "sa\n"))
-			b_swap_stacks(stacks, "sa");
-			if(!(is_instruction(&inst)))
-				isnt_inst++;
-			else
-			cheker(stacks, &inst);
-		}
-		else
-		{
-			if (isnt_inst != 0)
-				exit_msg("Error\n");
-			check_sorted(stacks);
-			exit(0);
-		}
-}
+	check_digits(argv, argc);
+	b_check_duplicate(stacks);
+	check_elemntes(stacks, &inst);
 }
