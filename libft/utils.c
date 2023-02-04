@@ -6,11 +6,12 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:37:02 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/04 01:34:18 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 05:58:01 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../Mandatory/push_swap.h"
+#include "../bonus/checker.h"
 
 int	ft_strlen(const char *s)
 {

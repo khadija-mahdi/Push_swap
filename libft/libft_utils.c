@@ -6,11 +6,12 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:06:58 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/04 01:04:44 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 06:25:13 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../Mandatory/push_swap.h"
+#include "../bonus/checker.h"
 
 void	ft_swap(int *a, int *b)
 {
