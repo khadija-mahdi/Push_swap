@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:47:17 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/03 04:47:44 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/03 23:30:16 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ int	get_positions(t_array *stacks, int start, int end)
 
 void	update_range(int *size_max, int *start, int *end)
 {
-	if (*size_max > 16 && *size_max < 150)
+	if (*size_max > 16 && *size_max < 100)
 	{
 		*start -= 8;
 		*end += 8;
 	}
-	else if (*size_max >= 150)
+	else if (*size_max >= 100)
 	{
-		*start -= 16;
-		*end += 16;
+		*start -= 50;
+		*end += 50;
 	}
 	if (*start <= 0)
 		*start = 0;
@@ -69,18 +69,3 @@ int	get_index(t_array *stacks, int top_b)
 	}
 	return (-1);
 }
-
-void	val_start_end(int *size_max, int *start, int *end)
-{
-	if (*size_max > 16 && *size_max < 150)
-	{
-		(*start) = (*size_max / 2) + 8;
-		(*end) = (*size_max / 2) - 8;
-	}
-	else if (*size_max >= 150)
-	{
-		(*start) = (*size_max / 2) + 16;
-		(*end) = (*size_max / 2) + 16;
-	}
-}
-

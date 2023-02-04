@@ -6,51 +6,11 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:28:30 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/03 08:20:35 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 00:51:25 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_array *stack, int i)
-{
-	int	index;
-
-	index = 0;
-	if (i == 0)
-	{
-		printf("\nstack a  { ");
-		while (index < stack->size_a)
-		{
-			printf("%d ,", stack->stack_a[index]);
-			index++;
-		}
-		printf(" }\n");
-		return ;
-	}
-	else if (i == 1)
-	{
-		printf("\nstack b{ ");
-		while (index < stack->size_b)
-		{
-			printf("%d ,", stack->stack_b[index]);
-			index++;
-		}
-		printf(" }\n");
-	}
-	else
-	{
-		index = 0;
-		printf("\nlist { ");
-		while (index < stack->list_size)
-		{
-			printf("%d ,", stack->list[index]);
-			index++;
-		}
-		printf(" }\n");
-		return ;
-	}
-}
 
 t_array	*init_stacks(int argc, char **argv, t_array	*array)
 {
@@ -69,7 +29,7 @@ t_array	*init_stacks(int argc, char **argv, t_array	*array)
 	while (j < argc - 1)
 	{
 		if (argv[i][0] == '\0')
-			exit_msg("Error_empty \n");
+			exit_msg("Error\n");
 		array->stack_a[j] = ft_atoi(argv[i]);
 		array->list[j] = array->stack_a[j];
 		array->size_a++;
@@ -90,13 +50,10 @@ int	main(int argc, char **argv)
 		return (0);
 	stacks = init_stacks(argc, argv, stacks);
 	check_digits(argv, argc);
-	check_duplicate(argc, argv);
+	check_duplicate(stacks);
 	check_sorted(argc, stacks);
 	sort_tow_three(stacks);
 	sort_short_elments(stacks);
 	push_stack_b(stacks);
 	push_to_stack_a(stacks);
-	// print_stack(stacks, 0);
-	// print_stack(stacks, 1);
-	// show(stacks, 0);
 }

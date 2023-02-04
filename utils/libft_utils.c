@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:06:58 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/02 06:54:46 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 01:04:44 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,36 +21,11 @@ void	ft_swap(int *a, int *b)
 	*b = c;
 }
 
-void	ft_sort_int_tab(int *tab, int size)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int	j;
 	int	i;
 
 	i = 0;
-	while (i < size - 1)
-	{
-		j = i + 1;
-		while (j <= size)
-		{
-			if (tab[i] > tab[j])
-			{
-				ft_swap(&tab[i], &tab[j]);
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	if (s2[0] == '+' && ((s1[i] - s2[i + 1]) == 0))
-		exit_msg("Error7 \n");
-	// if (s1[0] == '+' && ((s1[i + 1] - s2[i]) == 0))
-	// 	exit_msg("Error8 \n");
 	while ((s1[i] && s2[i]))
 	{
 		if (s1[i] == s2[i])

@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 04:21:55 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/02 07:10:00 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 01:01:19 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	swap_stacks(t_array *stacks, char *inst)
 		ft_swap(&stacks->stack_b[0], &stacks->stack_b[1]);
 		ft_putstr("ss\n");
 	}
-	// show(stacks, 1);
 }
 
 int	*add_to_stack(int *stack, int *size, int new_val)
@@ -86,5 +85,4 @@ void	push_stacks(t_array *stacks, char *inst)
 		stacks->stack_a = eject_f_stack(stacks->stack_a, &stacks->size_a);
 		ft_putstr("pb\n");
 	}
-	// show(stacks, 1);
 }

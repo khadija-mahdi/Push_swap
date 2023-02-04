@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 03:37:02 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/01/23 05:11:17 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 01:34:18 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_putstr(char *s)
 
 int	ft_isdigit(int c)
 {
-	if (((c >= '0' && c <= '9') || c == '+' || c == '-' || c == ' '))
+	if (c >= '0' && c <= '9')
 		return (1);
 	else
 		return (0);
@@ -53,7 +53,7 @@ int	count(const char *str, int sym)
 		str++;
 	}
 	if ((res > 2147483647 && sym == 1) || (res > 2147483648 && sym == -1))
-		exit_msg("Error10 \n");
+		exit_msg("Error\n");
 	return (res * sym);
 }
 
@@ -62,9 +62,6 @@ int	ft_atoi(const char *str)
 	int	sym;
 
 	sym = 1;
-	while (*str == '\t' || *str == '\r' || *str == '\v'
-		|| *str == '\f' || *str == ' ')
-		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')

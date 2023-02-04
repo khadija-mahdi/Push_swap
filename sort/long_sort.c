@@ -6,32 +6,28 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 06:44:53 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/03 08:17:57 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/04 00:05:37 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
- void push_to_stack_b(t_array *stacks, int *size_max, int *start, int *end)
+void	push_to_stack_b(t_array *stacks, int *size_max, int *start, int *end)
 {
-	int index;
-
-	index = get_positions(stacks, *start, *end);
-	while ((stacks->list[*start] > stacks->stack_a[0] || stacks->list[*end] < stacks->stack_a[0]) && index > stacks->size_a / 2)
-		reverse_rotate(stacks, "rra");
-	while ((stacks->list[*start] > stacks->stack_a[0] || stacks->list[*end] < stacks->stack_a[0]) && index < stacks->size_a / 2)
+	while ((stacks->list[*start] > stacks->stack_a[0] || stacks->list[*end]
+			< stacks->stack_a[0]))
 		rotate(stacks, "ra");
 	push_stacks(stacks, "pb");
 	if (stacks->stack_b[0] < stacks->list[*size_max / 2])
 		rotate(stacks, "rb");
 }
 
-void push_stack_b(t_array *stacks)
+void	push_stack_b(t_array *stacks)
 {
-	int start;
-	int end;
-	int size_max;
-	int index;
+	int	start;
+	int	end;
+	int	size_max;
+	int	index;
 
 	size_max = stacks->size_a - 1;
 	start = (size_max / 2) - 16;

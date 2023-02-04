@@ -1,14 +1,13 @@
 NAME = push_swap
 
 SRC= ./Instruction/rotate.c ./Instruction/push_and_swap.c ./utils/utils.c ./utils/libft_utils.c \
-	main.c parsing.c push_swap.c ./sort/short_sort.c  ./sort/long_sort.c show.c
+	main.c parsing.c push_swap.c ./sort/short_sort.c  ./sort/long_sort.c
 
 OBJ= $(SRC:.c=.o)
 
 CC = cc
 
-#CFLAGS = -Wall -Wextra -Werror 
-#CFLAGS = -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror 
 $(RM) = rm -f 
   
 all: $(NAME)

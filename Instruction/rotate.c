@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 04:06:36 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/02 07:10:08 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/03 23:49:54 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	rotate(t_array *stacks, char *inst)
 		stacks->stack_b = rotate_stacks(stacks->stack_b, &stacks->size_b);
 		ft_putstr("rr\n");
 	}
-	// show(stacks, 1);
 }
 
 int	*reverse_rotate_stack(int *stack, int *size)
@@ -99,5 +98,4 @@ void	reverse_rotate(t_array *stacks, char *inst)
 				&stacks->size_b);
 		ft_putstr("rrr\n");
 	}
-	// show(stacks, 1);
 }
