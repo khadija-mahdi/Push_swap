@@ -27,7 +27,7 @@ OBJ_BONUS= $(BONUS_SRC:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3 
+CFLAGS = -Wall -Wextra -Werror 
 
 
 $(RM) = rm -f 
@@ -41,23 +41,14 @@ $(NAME_BONUS): $(OBJ_BONUS)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) -o $(NAME_BONUS)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_BONUS)
 
 push: fclean
 	git add . && git commit -m "push" && git push
 
 re: fclean all
 
-
 bonus: $(NAME_BONUS)
-
-clean_bonus:
-	$(RM) $(OBJ_BONUS)
-
-fclean_bonus: clean_bonus
-	$(RM) $(NAME_BONUS)
-
-re_bonus: fclean_bonus bonus

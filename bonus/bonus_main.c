@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 01:42:40 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/04 09:37:54 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/05 01:03:23 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,76 +49,44 @@ void	cheker(t_stack *stacks, char **inst)
 	else if (*inst && !ft_strcmp(*inst, "ra\n"))
 		b_rotate(stacks, "ra");
 	else if (*inst && !ft_strcmp(*inst, "rb\n"))
-		b_rotate(stacks, "ra");
+		b_rotate(stacks, "rb");
 	else if (*inst && !ft_strcmp(*inst, "rra\n"))
 		b_reverse_rotate(stacks, "rra");
 	else if (*inst && !ft_strcmp(*inst, "rrb\n"))
 		b_reverse_rotate(stacks, "rrb");
 	else if (*inst && !ft_strcmp(*inst, "rrr\n"))
 		b_reverse_rotate(stacks, "rrr");
-}
-
-int	is_instruction(char **inst)
-{
-	if (!ft_strcmp(*inst, "sa\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "sb\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "ss\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "pa\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "pb\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "ra\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "rb\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "rr\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "rra\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "rrb\n"))
-		return (1);
-	if (!ft_strcmp(*inst, "rrr\n"))
-		return (1);
 	else
-		return (0);
+	{
+		ft_putstr("Error\n");
+		exit(0);
+	}
 }
 
-void	check_elemntes(t_stack *stacks, char **inst)
+void	check_elemntes(t_stack *stacks)
 {
-	int		isnt_inst;
 	int		i;
+	char	*inst;
 
-	isnt_inst = 0;
 	i = 0;
-	while (i < stacks->size_a - 1)
+	while (1)
 	{
-		*inst = get_next_line(0);
-		if (*inst != NULL)
+		inst = get_next_line(0);
+		if (inst != NULL)
 		{
-			if (*inst && !ft_strcmp(*inst, "sa\n"))
+			if (inst && !ft_strcmp(inst, "sa\n"))
 				b_swap_stacks(stacks, "sa");
-			if (!(is_instruction(inst)))
-				isnt_inst++;
 			else
-				cheker(stacks, inst);
+				cheker(stacks, &inst);
 		}
-		if (isnt_inst != 0)
-			exit_msg("Error\n");
-		else
-		{
-			b_check_sorted(stacks);
-			exit(0);
-		}
+		if (inst == NULL)
+			break ;
 	}
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stacks;
-	char	*inst;
 
 	stacks = NULL;
 	if (argc < 2)
@@ -126,5 +94,6 @@ int	main(int argc, char **argv)
 	stacks = init_stack_a(argc, argv, stacks);
 	check_digits(argv, argc);
 	b_check_duplicate(stacks);
-	check_elemntes(stacks, &inst);
+	check_elemntes(stacks);
+	b_check_sorted(stacks);
 }

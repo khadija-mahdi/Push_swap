@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:00:40 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/04 09:18:49 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/05 00:59:06 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	b_check_sorted(t_stack *stack)
 		ft_putstr("OK\n");
 		exit(0);
 	}
-	else if (is_sorted == 1)
+	else
 	{
 		ft_putstr("KO\n");
 		exit(0);
