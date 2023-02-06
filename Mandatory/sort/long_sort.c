@@ -6,7 +6,7 @@
 /*   By: kmahdi <kmahdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 06:44:53 by kmahdi            #+#    #+#             */
-/*   Updated: 2023/02/04 00:05:37 by kmahdi           ###   ########.fr       */
+/*   Updated: 2023/02/05 04:54:30 by kmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	push_stack_b(t_array *stacks)
 	int	size_max;
 	int	index;
 
-	size_max = stacks->size_a - 1;
-	start = (size_max / 2) - 16;
-	end = (size_max / 2) + 16;
-	if (size_max > 16)
+	size_max = stacks->size_a -1 ;
+	start = (size_max / 2);
+	end = (size_max / 2);
+	update_range(&size_max, &start, &end);
+	if (size_max >= 16)
 	{
 		while (stacks->size_a > 0)
 		{
